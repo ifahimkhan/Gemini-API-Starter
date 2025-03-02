@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/appearance">
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="dark_mode"
+            android:summary="@string/dark_mode_summary"
+            android:title="@string/dark_mode" />
+
+        <ListPreference
+            android:defaultValue="medium"
+            android:entries="@array/font_size_entries"
+            android:entryValues="@array/font_size_values"
+            android:key="font_size"
+            android:summary="%s"
+            android:title="@string/font_size" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/personalization">
+
+        <EditTextPreference
+            android:defaultValue="@string/default_username"
+            android:key="username"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/default_username"
+            android:title="@string/username" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/about">
+
+        <Preference
+            android:key="version"
+            android:summary="@string/app_version"
+            android:title="@string/version" />
+
+        <Preference
+            android:key="open_source"
+            android:summary="@string/open_source_summary"
+            android:title="@string/open_source" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

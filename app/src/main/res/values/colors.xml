@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary">#6200EE</color>
+    <color name="primary_dark">#3700B3</color>
+    <color name="secondary">#03DAC6</color>
+    <color name="secondary_dark">#018786</color>
+
+    <!-- Night mode colors -->
+    <color name="primary_night">#BB86FC</color>
+    <color name="primary_dark_night">#9965F4</color>
+    <color name="secondary_night">#03DAC6</color>
+    <color name="secondary_dark_night">#018786</color>
 </resources>
