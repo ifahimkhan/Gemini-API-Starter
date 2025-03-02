@@ -48,4 +48,8 @@ public class ChatMessageEntity {
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

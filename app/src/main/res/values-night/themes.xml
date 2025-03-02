@@ -1,7 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme for night mode. -->
     <style name="Base.Theme.GeminiAPIStarter" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary_night</item>
+        <item name="colorPrimaryVariant">@color/primary_dark_night</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary_night</item>
+        <item name="colorSecondaryVariant">@color/secondary_dark_night</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
 </resources>

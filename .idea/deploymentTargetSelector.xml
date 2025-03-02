@@ -4,6 +4,17 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
+<<<<<<< Updated upstream
+=======
+        <DropdownSelection timestamp="2025-03-02T17:42:45.813074100Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\srihari\.android\avd\Medium_Phone_API_Baklava.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
+>>>>>>> Stashed changes
       </SelectionState>
     </selectionStates>
   </component>

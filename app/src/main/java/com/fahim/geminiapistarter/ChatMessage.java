@@ -14,8 +14,22 @@ public class ChatMessage {
         this.timestamp = System.currentTimeMillis();
     }
 
+<<<<<<< Updated upstream
     // Add getters
     public int getMessageType() { return messageType; }
     public String getMessageContent() { return messageContent; }
     public long getTimestamp() { return timestamp; }
+=======
+    public int getMessageType() {
+        return messageType;
+    }
+
+    public String getMessageContent() {
+        return messageContent;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+>>>>>>> Stashed changes
 }

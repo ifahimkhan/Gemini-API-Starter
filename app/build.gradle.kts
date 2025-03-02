@@ -48,9 +48,16 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+<<<<<<< Updated upstream
 
     implementation ("androidx.room:room-runtime:2.5.0")
     annotationProcessor ("androidx.room:room-compiler:2.5.0")
     // For LiveData and ViewModel
+=======
+    implementation ("androidx.preference:preference:1.2.0")
+
+    implementation ("androidx.room:room-runtime:2.5.0")
+    annotationProcessor ("androidx.room:room-compiler:2.5.0")
+>>>>>>> Stashed changes
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
 }

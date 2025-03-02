@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Custom styles for your application -->
+    <style name="ChatTextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="UserChatBubble">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <style name="AIChatBubble">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:padding">12dp</item>
+    </style>
+</resources>
