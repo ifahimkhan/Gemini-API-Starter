@@ -20,7 +20,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:nestedScrollingEnabled="true"/>
 
+    <!-- Toggle Dark Mode Button -->
+
     <!-- User Input Field -->
+    <Button
+        android:id="@+id/toggleDarkModeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toggle Dark Mode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/promptEditTextLayout"
         style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
@@ -34,7 +48,7 @@
         android:inputType="textMultiLine"
         android:minLines="3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sendButton"
+        app:layout_constraintEnd_toStartOf="@+id/micButton"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -43,16 +57,29 @@
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Mic Button (Speech-to-Text) -->
+    <ImageButton
+        android:id="@+id/micButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:padding="8dp"
+        android:src="@drawable/ic_mic"
+        android:contentDescription="Mic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sendButton"
+        app:layout_constraintTop_toTopOf="@+id/promptEditTextLayout" />
+
     <!-- Send Button -->
     <ImageButton
         android:id="@+id/sendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:background="@color/black"
+        android:background="@null"
         android:padding="8dp"
-        android:src="@drawable/baseline_send_24"
-        android:text="Send"
+        android:src="@drawable/ic_send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/promptEditTextLayout" />
