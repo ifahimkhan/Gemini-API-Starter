@@ -8,18 +8,15 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.google.ai.client.generativeai.GenerativeModel;
 import com.google.ai.client.generativeai.type.GenerateContentResponse;
-
+import java.util.ArrayList;
+import java.util.List;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
@@ -27,39 +24,44 @@ import kotlin.coroutines.EmptyCoroutineContext;
 public class MainActivity extends AppCompatActivity {
 
     private EditText promptEditText;
-    private TextView responseTextView;
     private ProgressBar progressBar;
+    private RecyclerView chatRecyclerView;
+    private ChatAdapter chatAdapter;
+    private List<ChatMessage> chatList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
         promptEditText = findViewById(R.id.promptEditText);
         ImageButton submitPromptButton = findViewById(R.id.sendButton);
-        responseTextView = findViewById(R.id.displayTextView);
         progressBar = findViewById(R.id.progressBar);
+        chatRecyclerView = findViewById(R.id.chatRecyclerView);
 
+        // Setup RecyclerView
+        chatAdapter = new ChatAdapter(chatList);
+        chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        chatRecyclerView.setAdapter(chatAdapter);
 
         // Create GenerativeModel
         GenerativeModel generativeModel = new GenerativeModel("gemini-2.0-flash",
                 BuildConfig.API_KEY);
-
 
         submitPromptButton.setOnClickListener(v -> {
             String prompt = promptEditText.getText().toString();
             promptEditText.setError(null);
             if (prompt.isEmpty()) {
                 promptEditText.setError(getString(R.string.field_cannot_be_empty));
-                String string = getString(R.string.aistring);
-                responseTextView.setText(TextFormatter.getBoldSpannableText(string));
                 return;
             }
+
+            // Add user message to RecyclerView
+            chatList.add(new ChatMessage(prompt, true));
+            chatAdapter.notifyItemInserted(chatList.size() - 1);
+            chatRecyclerView.scrollToPosition(chatList.size() - 1);
+
             progressBar.setVisibility(VISIBLE);
             generativeModel.generateContent(prompt, new Continuation<>() {
                 @NonNull
@@ -76,12 +78,14 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("Response", responseString);
                     runOnUiThread(() -> {
                         progressBar.setVisibility(GONE);
-                        responseTextView.setText(TextFormatter.getBoldSpannableText(responseString));
 
+                        // Add AI response to RecyclerView
+                        chatList.add(new ChatMessage(responseString, false));
+                        chatAdapter.notifyItemInserted(chatList.size() - 1);
+                        chatRecyclerView.scrollToPosition(chatList.size() - 1);
                     });
                 }
             });
         });
-
     }
 }
