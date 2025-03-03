@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Top Bar: TTS Button (left) and Dark Mode Toggle (right) -->
+    
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="0dp"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Spacer to push toggle to the right -->
+        
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -30,7 +30,7 @@
             android:text="Dark Mode"/>
     </LinearLayout>
 
-    <!-- Chat History -->
+    
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_width="0dp"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Input Container -->
+    
     <LinearLayout
         android:id="@+id/inputContainer"
         android:layout_width="0dp"
@@ -53,7 +53,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Reduced-width text input field -->
+        
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/promptEditTextLayout"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -64,13 +64,14 @@
             android:layout_marginEnd="8dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/promptEditText"
+                style="@style/CustomTextInputEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:maxLines="4"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Container for the two buttons -->
+        
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,7 +103,7 @@
     </LinearLayout>
 
 
-    <!-- Centered ProgressBar Overlay -->
+    
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="48dp"

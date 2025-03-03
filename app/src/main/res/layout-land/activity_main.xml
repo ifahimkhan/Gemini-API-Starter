@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Left Pane: Chat History -->
+    
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_width="0dp"
@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toStartOf="@+id/rightContainer"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <!-- Right Pane: Constrained to 50% of screen width -->
+    
     <LinearLayout
         android:id="@+id/rightContainer"
         android:layout_width="0dp"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.5">
 
-        <!-- Top Bar: Only the Dark Mode Toggle -->
+        
         <LinearLayout
             android:id="@+id/topBar"
             android:layout_width="match_parent"
@@ -51,13 +51,12 @@
                 android:text="Dark Mode"/>
         </LinearLayout>
 
-        <!-- Spacer -->
+        
         <View
             android:layout_width="match_parent"
             android:layout_height="16dp"/>
 
-        <!-- Input Container: Reduced-width text field and two buttons -->
-        <!-- Input Container in Landscape Layout -->
+        
         <LinearLayout
             android:id="@+id/inputContainer"
             android:layout_width="match_parent"
@@ -66,7 +65,7 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp">
 
-            <!-- Reduced-width text input field -->
+            
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/promptEditTextLayout"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -77,13 +76,14 @@
                 android:layout_marginEnd="8dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/promptEditText"
+                    style="@style/CustomTextInputEditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
                     android:maxLines="4"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- TTS Button (Mic Icon) -->
+            
             <ImageButton
                 android:id="@+id/ttsButton_bottom"
                 android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
                 app:tint="?attr/colorOnSurface"
                 android:layout_marginEnd="4dp"/>
 
-            <!-- Send Button -->
+            
             <ImageButton
                 android:id="@+id/sendButton"
                 android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
 
     </LinearLayout>
 
-    <!-- Centered ProgressBar Overlay -->
+    
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="48dp"

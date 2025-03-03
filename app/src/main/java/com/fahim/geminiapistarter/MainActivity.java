@@ -7,10 +7,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Switch;
@@ -28,6 +31,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
 
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
@@ -41,28 +46,42 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<ChatMessage> chatMessages;
     private ChatAdapter chatAdapter;
     private ChatDatabase chatDatabase;
+    private TextToSpeech textToSpeech;
+    private ImageButton ttsButton; 
 
-    private static final String KEY_CHAT_MESSAGES = "chat_messages";
     private static final String KEY_PROMPT_TEXT = "prompt_text";
     private static final String PREFS_NAME = "app_prefs";
-    private static final String KEY_LAST_ACTIVE = "lastActiveTime";
-
-    // Threshold (in milliseconds) after which we consider the app was "closed" from background.
-    private static final long BACKGROUND_THRESHOLD = 2 * 60 * 1000; // 2 minutes
+    private static final String KEY_APP_IN_BACKGROUND = "appInBackground";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Automatically selects portrait or landscape layout based on orientation.
         setContentView(R.layout.activity_main);
-
+        
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        
+        chatDatabase = ChatDatabase.getInstance(this);
+        
+        if (savedInstanceState == null) {
+            boolean wasInBackground = prefs.getBoolean(KEY_APP_IN_BACKGROUND, false);
+            if (wasInBackground) {
+                chatDatabase.chatMessageDao().deleteAll();
+            }
+            
+            prefs.edit().putBoolean(KEY_APP_IN_BACKGROUND, false).apply();
+        }
+        
         promptEditText = findViewById(R.id.promptEditText);
-        ImageButton submitPromptButton = findViewById(R.id.sendButton);
+        ImageButton sendButton = findViewById(R.id.sendButton);
         progressBar = findViewById(R.id.progressBar);
         chatRecyclerView = findViewById(R.id.chatRecyclerView);
-        Switch modeToggle = findViewById(R.id.modeToggle);
+        
+        ttsButton = (ImageButton) findViewById(R.id.ttsButton);
+        if (ttsButton == null) {
+            ttsButton = (ImageButton) findViewById(R.id.ttsButton_bottom);
+        }
 
-        // Set up dark/light mode toggle.
+        Switch modeToggle = (Switch) findViewById(R.id.modeToggle);
         modeToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -70,27 +89,13 @@ public class MainActivity extends AppCompatActivity {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         });
-
-        // Initialize the Room database.
-        chatDatabase = ChatDatabase.getInstance(this);
-
-        // Check the last active time from SharedPreferences.
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        long lastActiveTime = prefs.getLong(KEY_LAST_ACTIVE, 0);
-        long currentTime = System.currentTimeMillis();
-        // If the app was in background longer than the threshold, clear chat history.
-        if (lastActiveTime > 0 && (currentTime - lastActiveTime) > BACKGROUND_THRESHOLD) {
-            chatDatabase.chatMessageDao().deleteAll();
-        }
-
-        // Load saved messages from Room.
-        List<ChatMessageEntity> savedEntities = chatDatabase.chatMessageDao().getAllMessages();
+        
         chatMessages = new ArrayList<>();
+        List<ChatMessageEntity> savedEntities = chatDatabase.chatMessageDao().getAllMessages();
         for (ChatMessageEntity entity : savedEntities) {
             chatMessages.add(new ChatMessage(entity.message, entity.isUser));
         }
 
-        // Restore prompt text from savedInstanceState (for configuration changes).
         if (savedInstanceState != null) {
             String savedPrompt = savedInstanceState.getString(KEY_PROMPT_TEXT, "");
             promptEditText.setText(savedPrompt);
@@ -100,69 +105,108 @@ public class MainActivity extends AppCompatActivity {
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         chatRecyclerView.setAdapter(chatAdapter);
 
-        // Create GenerativeModel instance.
-        GenerativeModel generativeModel = new GenerativeModel("gemini-2.0-flash",
-                BuildConfig.API_KEY);
-
-        submitPromptButton.setOnClickListener(v -> {
-            String prompt = promptEditText.getText().toString();
-            promptEditText.setError(null);
-            if (prompt.isEmpty()) {
-                promptEditText.setError(getString(R.string.field_cannot_be_empty));
-                return;
-            }
-
-            // Add user message to list and database.
-            ChatMessage userMsg = new ChatMessage(prompt, true);
-            chatMessages.add(userMsg);
-            chatAdapter.notifyItemInserted(chatMessages.size() - 1);
-            chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
-            chatDatabase.chatMessageDao().insert(new ChatMessageEntity(prompt, true));
-
-            progressBar.setVisibility(VISIBLE);
-            generativeModel.generateContent(prompt, new Continuation<>() {
-                @NonNull
-                @Override
-                public CoroutineContext getContext() {
-                    return EmptyCoroutineContext.INSTANCE;
+        textToSpeech = new TextToSpeech(this, status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                int result = textToSpeech.setLanguage(Locale.US);
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    Log.e("TTS", "Language not supported");
                 }
+            } else {
+                Log.e("TTS", "Initialization failed");
+            }
+        });
 
-                @Override
-                public void resumeWith(@NonNull Object o) {
-                    GenerateContentResponse response = (GenerateContentResponse) o;
-                    String responseString = response.getText();
-                    Log.d("Response", responseString);
-                    runOnUiThread(() -> {
-                        progressBar.setVisibility(GONE);
-                        // Add Gemini response to list and database.
-                        ChatMessage geminiMsg = new ChatMessage(responseString, false);
-                        chatMessages.add(geminiMsg);
-                        chatAdapter.notifyItemInserted(chatMessages.size() - 1);
-                        chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
-                        chatDatabase.chatMessageDao().insert(new ChatMessageEntity(responseString, false));
-                    });
+        if (ttsButton != null) {
+            ttsButton.setOnClickListener(v -> {
+                if (!chatMessages.isEmpty()) {
+                    String text = chatMessages.get(chatMessages.size() - 1).getMessage();
+                    textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, "utteranceId");
                 }
             });
+        }
+
+        final GenerativeModel generativeModel = new GenerativeModel("gemini-2.0-flash", BuildConfig.API_KEY);
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String prompt = promptEditText.getText().toString();
+                promptEditText.setError(null);
+                if (prompt.isEmpty()) {
+                    promptEditText.setError(getString(R.string.field_cannot_be_empty));
+                    return;
+                }
+                
+                ChatMessage userMsg = new ChatMessage(prompt, true);
+                chatMessages.add(userMsg);
+                chatAdapter.notifyItemInserted(chatMessages.size() - 1);
+                chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
+                chatDatabase.chatMessageDao().insert(new ChatMessageEntity(prompt, true));
+                
+                promptEditText.setText("");
+
+                progressBar.setVisibility(VISIBLE);
+                
+                generativeModel.generateContent(prompt, new Continuation<GenerateContentResponse>() {
+                    @NonNull
+                    @Override
+                    public CoroutineContext getContext() {
+                        return EmptyCoroutineContext.INSTANCE;
+                    }
+
+                    @Override
+                    public void resumeWith(@NonNull Object result) {
+                        final GenerateContentResponse response = (GenerateContentResponse) result;
+                        final String responseString = response.getText();
+                        Log.d("Response", responseString);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressBar.setVisibility(GONE);
+                                
+                                ChatMessage geminiMsg = new ChatMessage(responseString, false);
+                                chatMessages.add(geminiMsg);
+                                chatAdapter.notifyItemInserted(chatMessages.size() - 1);
+                                chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
+                                chatDatabase.chatMessageDao().insert(new ChatMessageEntity(responseString, false));
+                            }
+                        });
+                    }
+                });
+            }
         });
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // Record the time when the app goes to background.
+        
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        prefs.edit().putLong(KEY_LAST_ACTIVE, System.currentTimeMillis()).apply();
+        prefs.edit().putBoolean(KEY_APP_IN_BACKGROUND, true).apply();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        prefs.edit().putBoolean(KEY_APP_IN_BACKGROUND, false).apply();
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        // Save current prompt text for configuration changes.
         outState.putString(KEY_PROMPT_TEXT, promptEditText.getText().toString());
-        // Note: chat history is persisted in the Room database.
     }
 
-    // Parcelable class representing each chat message (for in‑memory state only)
+    @Override
+    protected void onDestroy() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+        super.onDestroy();
+    }
+    
     public static class ChatMessage implements Parcelable {
         private String message;
         private boolean isUser;
@@ -203,13 +247,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void writeToParcel(Parcel parcel, int i) {
+        public void writeToParcel(Parcel parcel, int flags) {
             parcel.writeString(message);
             parcel.writeByte((byte) (isUser ? 1 : 0));
         }
     }
-
-    // RecyclerView Adapter for displaying chat messages.
+    
     public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
         private ArrayList<ChatMessage> messages;
 
@@ -220,9 +263,7 @@ public class MainActivity extends AppCompatActivity {
         @NonNull
         @Override
         public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            // Here we use the built-in simple_list_item_1 layout for brevity.
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(android.R.layout.simple_list_item_1, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_item, parent, false);
             return new ChatViewHolder(view);
         }
 
@@ -242,12 +283,21 @@ public class MainActivity extends AppCompatActivity {
 
             public ChatViewHolder(@NonNull View itemView) {
                 super(itemView);
-                messageTextView = itemView.findViewById(android.R.id.text1);
+                messageTextView = itemView.findViewById(R.id.messageTextView);
             }
 
             public void bind(ChatMessage chatMessage) {
-                String displayText = (chatMessage.isUser() ? "You: " : "Gemini: ") + chatMessage.getMessage();
-                messageTextView.setText(displayText);
+                messageTextView.setText(chatMessage.getMessage());
+                
+                FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) messageTextView.getLayoutParams();
+                if (chatMessage.isUser()) {
+                    messageTextView.setBackgroundResource(R.drawable.user_message_bg);
+                    params.gravity = Gravity.END;
+                } else {
+                    messageTextView.setBackgroundResource(R.drawable.gemini_message_bg);
+                    params.gravity = Gravity.START;
+                }
+                messageTextView.setLayoutParams(params);
             }
         }
     }

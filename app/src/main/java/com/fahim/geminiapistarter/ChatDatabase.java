@@ -16,7 +16,7 @@ public abstract class ChatDatabase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                             ChatDatabase.class, "chat_database")
-                    .allowMainThreadQueries() // For simplicity; consider using AsyncTask or coroutines in production
+                    .allowMainThreadQueries()
                     .build();
         }
         return instance;
