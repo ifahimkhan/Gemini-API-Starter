@@ -1,9 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.GeminiAPIStarter" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorOnSurface">#000000</item>
+        <item name="android:textColorPrimary">#000000</item>
+        <item name="android:textColorHint">#888888</item>
+        <item name="iconTint">#000000</item>
+        <item name="inputTextTint">#000000</item>
     </style>
-
     <style name="Theme.GeminiAPIStarter" parent="Base.Theme.GeminiAPIStarter" />
 </resources>

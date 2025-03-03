@@ -14,8 +14,10 @@ In the 1980s, during the rise of the personal computer, Aldus Corporation develo
 
 The Lorem ipsum text was thought to be random words until the 1990s, when its source was discovered by Richard McClintock, an American professor and Latin scholar. He traced the text to a passage from the 1914 Loeb Classical Library edition of De finibus bonorum et malorum (“On the Ends of Good and Evil”), a treatise on ethics by Roman statesman and philosopher Cicero from 45 bce. In the original passage, the first sentence used in the dummy text reads:
     </string>
+    <string name="tts_button">Text to Speech</string>
     <string name="response">Response will be displayed here!\n</string>
     <string name="field_cannot_be_empty">Field cannot be empty</string>
+    <string name="send_message">Send</string>
     <string name="aistring">**Artificial Intelligence (AI)**
 
                                                                                                     AI refers to the simulation of human intelligence in machines that are programmed to:
