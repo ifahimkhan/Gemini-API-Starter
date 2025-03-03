@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<ChatMessage> chatMessages;
     private ChatAdapter chatAdapter;
     private ChatDatabase chatDatabase;
+    private TextToSpeech textToSpeech;
     private ImageButton micButton;
     private static final String KEY_PROMPT_TEXT = "prompt_text";
     private static final String PREFS_NAME = "app_prefs";
@@ -126,16 +128,13 @@ public class MainActivity extends AppCompatActivity {
             public void resumeWith(@NonNull Object result) {
                 final GenerateContentResponse response = (GenerateContentResponse) result;
                 final String responseString = response.getText();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        progressBar.setVisibility(GONE);
-                        ChatMessage geminiMsg = new ChatMessage(responseString, false);
-                        chatMessages.add(geminiMsg);
-                        chatAdapter.notifyItemInserted(chatMessages.size() - 1);
-                        chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
-                        chatDatabase.chatMessageDao().insert(new ChatMessageEntity(responseString, false));
-                    }
+                runOnUiThread(() -> {
+                    progressBar.setVisibility(GONE);
+                    ChatMessage geminiMsg = new ChatMessage(responseString, false);
+                    chatMessages.add(geminiMsg);
+                    chatAdapter.notifyItemInserted(chatMessages.size() - 1);
+                    chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
+                    chatDatabase.chatMessageDao().insert(new ChatMessageEntity(responseString, false));
                 });
             }
         });
@@ -170,10 +169,9 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         prefs.edit().putBoolean(KEY_APP_IN_BACKGROUND, false).apply();
-        int textColor = getThemeColor(android.R.attr.textColorPrimary);
-        int hintColor = getThemeColor(android.R.attr.textColorHint);
-        promptEditText.setTextColor(textColor);
-        promptEditText.setHintTextColor(hintColor);
+        int inputColor = getThemeColor(R.attr.inputTextTint);
+        promptEditText.setTextColor(inputColor);
+        promptEditText.setHintTextColor(inputColor);
     }
 
     @Override
@@ -187,6 +185,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(KEY_PROMPT_TEXT, promptEditText.getText().toString());
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+        super.onDestroy();
     }
 
     public int getThemeColor(int attr) {
