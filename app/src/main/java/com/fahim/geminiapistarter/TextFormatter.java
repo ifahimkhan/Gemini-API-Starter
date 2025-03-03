@@ -64,13 +64,13 @@ public class TextFormatter {
             // Append the text before the matched **bold** text
             spannableBuilder.append(input.substring(lastIndex, start));
 
-            // Extract the bold text without the **
+
             String boldText = matcher.group(1);
             SpannableString spannable = new SpannableString(boldText);
             assert boldText != null;
             spannable.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            // Append the bold text
+
             spannableBuilder.append(spannable);
 
             lastIndex = end;

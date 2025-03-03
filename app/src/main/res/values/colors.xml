@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primaryColor">#6200EE</color>
+    <color name="primaryLight">#BB86FC</color>
+    <color name="userMessage">#4285F4</color>
+    <color name="botMessage">#E8EAF6</color>
+
 </resources>
