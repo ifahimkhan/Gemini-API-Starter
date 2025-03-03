@@ -9,7 +9,7 @@ public class ChatMessageEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private String message;  // Renamed from 'text' to 'message' for consistency
+    private String message;
     private boolean isUser;
 
     // Constructor
@@ -18,12 +18,12 @@ public class ChatMessageEntity {
         this.isUser = isUser;
     }
 
-    // Getters
+
     public int getId() {
         return id;
     }
 
-    public String getMessage() {  // ✅ Renamed from 'getText()' to 'getMessage()'
+    public String getMessage() {
         return message;
     }
 
@@ -31,7 +31,7 @@ public class ChatMessageEntity {
         return isUser;
     }
 
-    // Setter for ID
+
     public void setId(int id) {
         this.id = id;
     }
