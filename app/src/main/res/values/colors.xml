@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Theme colors -->
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="accent">#FF4081</color>
+
+    <!-- Background colors -->
+    <color name="background_light">#FAFAFA</color>
+    <color name="background_dark">#121212</color>
+
+    <!-- Surface colors (these were missing) -->
+    <color name="surface_light">#FFFFFF</color>
+    <color name="on_surface_light">#000000</color>
+    <color name="surface_dark">#2D2D2D</color>
+    <color name="on_surface_dark">#FFFFFF</color>
+
+    <!-- Text colors -->
+    <color name="text_primary_light">#DE000000</color>
+    <color name="text_secondary_light">#99000000</color>
+    <color name="text_primary_dark">#DEFFFFFF</color>
+    <color name="text_secondary_dark">#99FFFFFF</color>
+
+    <!-- Message bubble colors -->
+    <color name="user_message_bg">#3F51B5</color>
+    <color name="user_message_text">#FFFFFF</color>
+    <color name="ai_message_bg_light">#E0E0E0</color>
+    <color name="ai_message_bg_dark">#2D2D2D</color>
+    <color name="ai_message_text_light">#000000</color>
+    <color name="ai_message_text_dark">#FFFFFF</color>
 </resources>
