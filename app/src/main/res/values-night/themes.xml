@@ -3,5 +3,7 @@
         <item name="colorOnSurface">#000000</item>
         <item name="android:textColorPrimary">#000000</item>
         <item name="android:textColorHint">#CCCCCC</item>
+        <item name="iconTint">#FF4081</item>
+        <item name="inputTextTint">#FFFFFF</item>
     </style>
 </resources>

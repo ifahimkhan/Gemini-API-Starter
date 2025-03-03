@@ -86,8 +86,9 @@
                 android:layout_marginTop="10dp"
                 android:padding="11dp"
                 android:src="@drawable/ic_tts"
-                app:tint="?attr/colorOnSurface"
-                android:layout_marginEnd="4dp"/>
+                android:layout_marginEnd="4dp"
+                app:tint="?attr/iconTint"
+                />
 
             <ImageButton
                 android:id="@+id/sendButton"
@@ -96,9 +97,10 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/send_message"
                 android:src="@drawable/baseline_send_24"
-                app:tint="?attr/colorOnSurface"
                 android:layout_marginTop="10dp"
-                android:padding="11dp"/>
+                android:padding="11dp"
+                app:tint="?attr/iconTint"
+                />
         </LinearLayout>
     </LinearLayout>
 
