@@ -27,13 +27,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         ChatMessage chatMessage = chatList.get(position);
         holder.messageTextView.setText(chatMessage.getMessage());
 
-        // Align messages based on sender
+        // Apply different background for User & AI messages
         if (chatMessage.isUser()) {
             holder.messageTextView.setBackgroundResource(R.drawable.bg_user_message);
         } else {
             holder.messageTextView.setBackgroundResource(R.drawable.bg_ai_message);
         }
     }
+
 
     @Override
     public int getItemCount() {
