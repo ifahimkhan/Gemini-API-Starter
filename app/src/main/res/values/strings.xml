@@ -16,6 +16,7 @@ The Lorem ipsum text was thought to be random words until the 1990s, when its so
     </string>
     <string name="response">Response will be displayed here!\n</string>
     <string name="field_cannot_be_empty">Field cannot be empty</string>
+    <string name="send_message">Send</string>
     <string name="aistring">**Artificial Intelligence (AI)**
 
                                                                                                     AI refers to the simulation of human intelligence in machines that are programmed to:
