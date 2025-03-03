@@ -48,30 +48,34 @@ public class MainActivity extends AppCompatActivity {
         Button toggleDarkModeButton = findViewById(R.id.toggleDarkModeButton);
 
 // Load dark mode state from SharedPreferences
-        SharedPreferences preferences = getSharedPreferences("app_prefs", MODE_PRIVATE);
-        boolean isDarkMode = preferences.getBoolean("dark_mode", false);
+//        SharedPreferences preferences = getSharedPreferences("app_prefs", MODE_PRIVATE);
+//        boolean isDarkMode = preferences.getBoolean("dark_mode", false);
 
 // Set button text based on current theme
-        toggleDarkModeButton.setText(isDarkMode ? "Light Mode" : "Dark Mode");
+//        toggleDarkModeButton.setText(isDarkMode ? "Light Mode" : "Dark Mode");
 
 // Toggle Dark Mode on button click
         toggleDarkModeButton.setOnClickListener(v -> {
-            boolean currentMode = preferences.getBoolean("dark_mode", false);
+            new Thread(() -> {
+                UserPreferencesDao dao = AppDatabase.getInstance(this).userPreferencesDao();
+                UserPreferences preferences = dao.getPreferences();
 
-            // Switch between Light and Dark mode
-            if (currentMode) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                preferences.edit().putBoolean("dark_mode", false).apply();
-                toggleDarkModeButton.setText("Dark Mode");
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                preferences.edit().putBoolean("dark_mode", true).apply();
-                toggleDarkModeButton.setText("Light Mode");
-            }
+                if (preferences == null) {
+                    preferences = new UserPreferences(false);
+                    dao.insert(preferences);
+                }
 
-            // Restart activity to apply changes
-            recreate();
+                boolean isDarkMode = preferences.darkMode;
+                AppCompatDelegate.setDefaultNightMode(isDarkMode ? AppCompatDelegate.MODE_NIGHT_NO : AppCompatDelegate.MODE_NIGHT_YES);
+                dao.update(new UserPreferences(!isDarkMode));
+
+                runOnUiThread(() -> {
+                    toggleDarkModeButton.setText(isDarkMode ? "Dark Mode" : "Light Mode");
+                    recreate();
+                });
+            }).start();
         });
+
 
 
         promptEditText = findViewById(R.id.promptEditText);
@@ -79,6 +83,16 @@ public class MainActivity extends AppCompatActivity {
         ImageButton micButton = findViewById(R.id.micButton);
         progressBar = findViewById(R.id.progressBar);
         chatRecyclerView = findViewById(R.id.chatRecyclerView);
+        new Thread(() -> {
+            List<ChatMessageEntity> chatHistory = AppDatabase.getInstance(this).chatDao().getAllChats();
+            runOnUiThread(() -> {
+                for (ChatMessageEntity entity : chatHistory) {
+                    chatList.add(new ChatMessage(entity.message, entity.isUserMessage));
+                }
+                chatAdapter.notifyDataSetChanged();
+            });
+        }).start();
+
 
         // Setup RecyclerView
         chatAdapter = new ChatAdapter(chatList);
@@ -102,14 +116,18 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Add user message to RecyclerView
-        chatList.add(new ChatMessage(prompt, true));
+        // Add user message to RecyclerView and Database
+        ChatMessage userMessage = new ChatMessage(prompt, true);
+        chatList.add(userMessage);
         chatAdapter.notifyItemInserted(chatList.size() - 1);
         chatRecyclerView.scrollToPosition(chatList.size() - 1);
 
+        new Thread(() -> {
+            AppDatabase.getInstance(this).chatDao().insert(new ChatMessageEntity(prompt, true));
+        }).start();
+
         progressBar.setVisibility(VISIBLE);
 
-        // Call Gemini API
         generativeModel.generateContent(prompt, new Continuation<>() {
             @NonNull
             @Override
@@ -121,19 +139,24 @@ public class MainActivity extends AppCompatActivity {
             public void resumeWith(@NonNull Object o) {
                 GenerateContentResponse response = (GenerateContentResponse) o;
                 String responseString = response.getText();
-                assert responseString != null;
-                Log.d("Response", responseString);
+
                 runOnUiThread(() -> {
                     progressBar.setVisibility(GONE);
 
-                    // Add AI response to RecyclerView
-                    chatList.add(new ChatMessage(responseString, false));
+                    // Add AI response to RecyclerView and Database
+                    ChatMessage aiMessage = new ChatMessage(responseString, false);
+                    chatList.add(aiMessage);
                     chatAdapter.notifyItemInserted(chatList.size() - 1);
                     chatRecyclerView.scrollToPosition(chatList.size() - 1);
+
+                    new Thread(() -> {
+                        AppDatabase.getInstance(MainActivity.this).chatDao().insert(new ChatMessageEntity(responseString, false));
+                    }).start();
                 });
             }
         });
     }
+
 
     private void startVoiceInput() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
