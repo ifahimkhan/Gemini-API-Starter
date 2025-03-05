@@ -57,24 +57,42 @@ public class MainActivity extends AppCompatActivity {
 // Toggle Dark Mode on button click
         toggleDarkModeButton.setOnClickListener(v -> {
             new Thread(() -> {
-                UserPreferencesDao dao = AppDatabase.getInstance(this).userPreferencesDao();
-                UserPreferences preferences = dao.getPreferences();
+                try {
+                    UserPreferencesDao dao = AppDatabase.getInstance(MainActivity.this).userPreferencesDao();
+                    UserPreferences preferences = dao.getPreferences();
 
-                if (preferences == null) {
-                    preferences = new UserPreferences(false);
-                    dao.insert(preferences);
+                    if (preferences == null) {
+                        preferences = new UserPreferences(false);
+                        dao.insert(preferences);
+                    }
+
+                    boolean isDarkMode = preferences.darkMode;
+                    boolean newMode = !isDarkMode;
+
+                    // Update preferences safely before setting the theme
+                    dao.update(new UserPreferences(newMode));
+
+                    runOnUiThread(() -> {
+                        // Update button text **before** applying the theme
+                        toggleDarkModeButton.setText(newMode ? "Dark Mode" : "Light Mode");
+
+                        // Apply dark mode
+                        AppCompatDelegate.setDefaultNightMode(
+                                newMode ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO
+                        );
+
+                        // Restart activity to ensure immediate application of theme
+                        recreate();
+                    });
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "Error toggling dark mode", Toast.LENGTH_SHORT).show());
                 }
-
-                boolean isDarkMode = preferences.darkMode;
-                AppCompatDelegate.setDefaultNightMode(isDarkMode ? AppCompatDelegate.MODE_NIGHT_NO : AppCompatDelegate.MODE_NIGHT_YES);
-                dao.update(new UserPreferences(!isDarkMode));
-
-                runOnUiThread(() -> {
-                    toggleDarkModeButton.setText(isDarkMode ? "Dark Mode" : "Light Mode");
-                    recreate();
-                });
             }).start();
         });
+
+
 
 
 
