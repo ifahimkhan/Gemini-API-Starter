@@ -22,17 +22,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_chat_message"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
     <androidx.cardview.widget.CardView
         android:id="@+id/inputContainer"
         android:layout_width="0dp"
@@ -51,15 +40,6 @@
             android:padding="8dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/voiceInputButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_mic"
-                android:contentDescription="Voice Input"
-                android:tint="?attr/colorPrimary"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/promptEditTextLayout"
@@ -87,7 +67,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/baseline_send_24"
                 android:contentDescription="@string/send_message"
-                android:tint="?attr/colorPrimary"/>
+                />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
