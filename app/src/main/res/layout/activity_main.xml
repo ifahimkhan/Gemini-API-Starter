@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#000000"
     android:padding="16dp"
     tools:context=".MainActivity">
 
@@ -22,34 +22,51 @@
         android:inputType="textMultiLine"
         android:minLines="3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sendButton"
+        app:layout_constraintEnd_toStartOf="@+id/micButton"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/promptEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="#FBFBFB" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Speech-to-text (Microphone) Button -->
+    <ImageButton
+        android:id="@+id/micButton"
+        android:layout_width="28dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:drawable/ic_btn_speak_now"
+        android:backgroundTint="#0ADECC"
+        android:contentDescription="Microphone Button"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sendButton"
+        app:layout_constraintTop_toTopOf="@+id/promptEditTextLayout" />
+
+    <!-- Send Button -->
     <ImageButton
         android:id="@+id/sendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="8dp"
-        android:background="@color/black"
+        android:background="@drawable/ic_send_button_background"
+        android:contentDescription="Send Button"
         android:padding="8dp"
         android:src="@drawable/baseline_send_24"
-        android:text="Send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/promptEditTextLayout" />
+
+
 
     <ScrollView
         android:id="@+id/scrollText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
+        android:background="#D9EEF0"
         android:nestedScrollingEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/promptEditTextLayout"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,15 +81,28 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@drawable/twotone_computer_24" />
+            <ToggleButton
+                android:id="@+id/themeToggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="Dark Mode"
+                android:textOff="Light Mode"
+                app:layout_constraintBottom_toTopOf="@+id/promptEditTextLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:checked="false" />
 
             <TextView
                 android:id="@+id/displayTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="monospace"
                 android:padding="8dp"
-                android:text="waiting..."
-                android:textSize="18sp" />
-
+                android:text="GEMINI✨"
+                android:textAlignment="center"
+                android:textColor="#1420BA"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
@@ -87,6 +117,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

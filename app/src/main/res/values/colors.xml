@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="bg">#5679E3</color> <!-- Light blue -->
+    <color name="bg1">#61CBE8</color> <!-- Lighter blue -->
+    <color name="surface">#D6EFF2</color> <!-- Very light blue, close to white -->
+    <color name="textColorPrimary">#000000</color> <!-- Black -->
+    <color name="white">#FFFFFF</color>
+    <color name="green">#02ED3E</color>
+    <color name="buttonColor">#9CDCE6</color><!-- Bright green -->
+    <color name="send">#436D76</color><!-- Bright green -->
+        <color name="colorPrimary">#010310</color>
+        <color name="colorPrimaryDark">#3700B3</color>
+        <color name="colorAccent">#022F2C</color>
+
+
+        <color name="textColorPrimaryDark">#000000</color>
+
+
 </resources>
