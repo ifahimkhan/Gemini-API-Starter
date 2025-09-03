@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
-
+    android:padding="16dp" tools:context=".MainActivity">
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/promptEditTextLayout"
         style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
@@ -24,13 +23,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/sendButton"
         app:layout_constraintStart_toStartOf="parent">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/promptEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
-
     <ImageButton
         android:id="@+id/sendButton"
         android:layout_width="wrap_content"
@@ -44,7 +41,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/promptEditTextLayout" />
-
     <ScrollView
         android:id="@+id/scrollText"
         android:layout_width="match_parent"
@@ -54,17 +50,14 @@
         app:layout_constraintBottom_toTopOf="@+id/promptEditTextLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@drawable/twotone_computer_24" />
-
             <TextView
                 android:id="@+id/displayTextView"
                 android:layout_width="match_parent"
@@ -72,10 +65,8 @@
                 android:padding="8dp"
                 android:text="waiting..."
                 android:textSize="18sp" />
-
         </LinearLayout>
     </ScrollView>
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -87,6 +78,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
