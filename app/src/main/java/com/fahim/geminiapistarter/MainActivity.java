@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.ai.client.generativeai.GenerativeModel;
 import com.google.ai.client.generativeai.type.GenerateContentResponse;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ import kotlin.coroutines.EmptyCoroutineContext;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText promptEditText;
+    private TextInputEditText promptEditText;
     private RecyclerView rvMessages;
     private MessagesAdapter adapter;
     private GenerativeModel generativeModel;
@@ -81,17 +82,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void applySavedPreferences() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        String lastPrompt = prefs.getString(KEY_LAST_PROMPT, "");
         boolean darkMode = prefs.getBoolean(KEY_DARK_MODE, false);
+        String lastPrompt = prefs.getString(KEY_LAST_PROMPT, "");
 
-        if (!lastPrompt.isEmpty()) {
+        AppCompatDelegate.setDefaultNightMode(
+                darkMode ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO
+        );
+
+        if (!lastPrompt.isEmpty() && promptEditText != null) {
             promptEditText.setText(lastPrompt);
-        }
-
-        if (darkMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
 
