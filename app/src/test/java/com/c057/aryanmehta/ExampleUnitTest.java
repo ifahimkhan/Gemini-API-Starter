@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.c057.aryanmehta;
 
 import org.junit.Test;
 
