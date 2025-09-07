@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="userBubble">#25D366</color>
+    <color name="userText">#FFFFFF</color>
+    <color name="aiBubble">#EDEDED</color>
+    <color name="aiText">#000000</color>
 </resources>
