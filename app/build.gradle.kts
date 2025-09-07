@@ -1,3 +1,17 @@
+import java.io.File
+import java.io.FileInputStream
+import java.util.Properties
+
+
+fun gradleLocalProperties(projectRootDir: File, providers: org.gradle.api.provider.ProviderFactory): Properties {
+    val props = Properties()
+    val localPropertiesFile = File(projectRootDir, "local.properties")
+    if (localPropertiesFile.exists()) {
+        FileInputStream(localPropertiesFile).use { props.load(it) }
+    }
+    return props
+}
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -5,6 +19,7 @@ plugins {
 android {
     namespace = "com.fahim.geminiapistarter"
     compileSdk = 35
+
     buildFeatures {
         buildConfig = true
         viewBinding = true
@@ -17,8 +32,11 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        val apiKey: String = project.findProperty("GEMINI_API_KEY") as String? ?: ""
-        buildConfigField("String", "API_KEY", "\"${apiKey}\"")
+
+        val props = gradleLocalProperties(rootDir, providers)
+        val geminiKey = props.getProperty("GEMINI_API_KEY") ?: ""
+        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiKey\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,6 +49,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -38,7 +57,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
