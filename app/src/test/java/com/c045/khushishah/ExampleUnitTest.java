@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.c045.khushishah;
 
 import org.junit.Test;
 
