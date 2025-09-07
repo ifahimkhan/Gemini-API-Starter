@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.fahim.geminiapistarter"
+    namespace = "com.C060.Tushita"
     compileSdk = 35
     buildFeatures {
         buildConfig = true
