@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_toggle_theme"
+        android:title="Toggle Dark Mode"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_clear_history"
+        android:title="Clear History"
+        android:showAsAction="never" />
+</menu>
