@@ -332,64 +332,8 @@ public class MainActivity extends AppCompatActivity {
 
 // Inside MainActivity.java
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Log.d(TAG, "onOptionsItemSelected called with item: " + item.getTitle() + " (ID: " + item.getItemId() + ")"); // <<<< MODIFIED THIS LOG SLIGHTLY
-        // Log the expected ID for comparison:
-        Log.d(TAG, "Expected ID for clear history: " + R.id.action_clear_history); // <<<< ADD THIS
 
-        if (item.getItemId() == R.id.action_clear_history) {
-            Log.d(TAG, "action_clear_history item selected!"); // <<<< ADD THIS
-            showClearHistoryConfirmationDialog();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
-    private void showClearHistoryConfirmationDialog() {
-        Log.d(TAG, "showClearHistoryConfirmationDialog called!"); // <<<< ADD THIS
-        new AlertDialog.Builder(this)
-                .setTitle("Clear Chat History")
-                .setMessage("Are you sure you want to delete all messages?")
-                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                    Log.d(TAG, "Dialog 'Yes' button clicked!"); // <<<< ADD THIS
-                    clearChatHistory(); // This is the call to the method you just updated
-                })
-                .setNegativeButton(android.R.string.no, (dialog, which) -> {
-                    Log.d(TAG, "Dialog 'No' button clicked!"); // <<<< ADD THIS (Good to log this too)
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-    }
-
-    private void clearChatHistory() {
-        Log.d("MainActivity", "clearChatHistory() called!");
-
-        executorService.execute(() -> {
-            try {
-                db.messageDao().clearAllMessages();
-                Log.d("MainActivity", "All messages cleared from DB.");
-
-                int remaining = db.messageDao().getAll().size();
-                Log.d("MainActivity", "Remaining messages after delete: " + remaining);
-
-                runOnUiThread(() -> {
-                    messages.clear(); // 🔑 clear the same list
-                    chatAdapter.notifyDataSetChanged(); // 🔑 full UI refresh
-                    Toast.makeText(
-                            MainActivity.this,
-                            remaining == 0 ? "Chat history cleared" : "Warning: Some messages still remain!",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                });
-            } catch (Exception e) {
-                Log.e("MainActivity", "Error clearing chat history from DB", e);
-                runOnUiThread(() ->
-                        Toast.makeText(MainActivity.this, "Error clearing history", Toast.LENGTH_SHORT).show()
-                );
-            }
-        });
-    }
 
     @Override
     protected void onDestroy() {
