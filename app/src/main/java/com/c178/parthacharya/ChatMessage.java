@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.c178.parthacharya;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

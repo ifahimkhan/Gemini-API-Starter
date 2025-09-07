@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.c178.parthacharya;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;

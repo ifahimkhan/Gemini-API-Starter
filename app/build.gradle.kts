@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.fahim.geminiapistarter"
+    namespace = "com.c178.parthacharya"
     compileSdk = 35
     buildFeatures {
         buildConfig = true

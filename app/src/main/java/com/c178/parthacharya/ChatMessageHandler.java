@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.c178.parthacharya;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
