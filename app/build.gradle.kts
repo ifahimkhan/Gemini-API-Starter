@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.common)
     implementation(libs.generativeai)
+    implementation("com.google.code.gson:gson:2.13.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
