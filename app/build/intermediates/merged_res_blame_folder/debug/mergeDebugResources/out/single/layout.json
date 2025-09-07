@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.techsetu.geminichat.app-mergeDebugResources-41:/layout/activity_main.xml",
+        "source": "com.techsetu.geminichat.app-main-44:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.techsetu.geminichat.app-mergeDebugResources-41:/layout/item_message_user.xml",
+        "source": "com.techsetu.geminichat.app-main-44:/layout/item_message_user.xml"
+    },
+    {
+        "merged": "com.techsetu.geminichat.app-mergeDebugResources-41:/layout/item_message_bot.xml",
+        "source": "com.techsetu.geminichat.app-main-44:/layout/item_message_bot.xml"
+    }
+]
