@@ -1,5 +1,7 @@
 [versions]
 agp = "8.8.0"
+kotlin = "2.0.21"
+
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -22,5 +24,5 @@ common = { group = "com.google.ai.client.generativeai", name = "common", version
 generativeai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeai" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
-
+androidApplication = { id = "com.android.application",        version.ref = "agp" }
+kotlinAndroid     = { id = "org.jetbrains.kotlin.android",     version.ref = "kotlin" }
