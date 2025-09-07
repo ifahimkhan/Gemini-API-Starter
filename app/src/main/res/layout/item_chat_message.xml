@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?attr/colorOnSurface" />
 
             <TextView
                 android:id="@+id/timestampText"
@@ -37,7 +37,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="4dp"
                 android:textSize="12sp"
-                android:textColor="?android:attr/textColorSecondary" />
+                android:textColor="?attr/colorOnSurfaceVariant" />
 
         </LinearLayout>
 

@@ -3,6 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_user_settings"
+        android:icon="@drawable/baseline_settings_24"
+        android:title="Settings"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_conversation_history"
+        android:icon="@drawable/baseline_history_24"
+        android:title="History"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_toggle_theme"
         android:icon="@drawable/baseline_dark_mode_24"
         android:title="Toggle Dark Mode"
