@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.C047.Tia_Assignment1;
 
 import org.junit.Test;
 
