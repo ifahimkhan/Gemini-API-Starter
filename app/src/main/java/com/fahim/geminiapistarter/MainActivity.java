@@ -35,32 +35,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+
+        // Handle system window insets
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainLayout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         promptEditText = findViewById(R.id.promptEditText);
         ImageButton submitPromptButton = findViewById(R.id.sendButton);
         responseTextView = findViewById(R.id.displayTextView);
         progressBar = findViewById(R.id.progressBar);
 
-
-        // Create GenerativeModel
+        // Create GenerativeModel with API key
         GenerativeModel generativeModel = new GenerativeModel("gemini-2.0-flash",
-                BuildConfig.API_KEY);
-
+                BuildConfig.GEMINI_API_KEY);
 
         submitPromptButton.setOnClickListener(v -> {
-            String prompt = promptEditText.getText().toString();
+            String prompt = promptEditText.getText().toString().trim();
             promptEditText.setError(null);
+
             if (prompt.isEmpty()) {
                 promptEditText.setError(getString(R.string.field_cannot_be_empty));
                 String string = getString(R.string.aistring);
                 responseTextView.setText(TextFormatter.getBoldSpannableText(string));
                 return;
             }
+
             progressBar.setVisibility(VISIBLE);
+
             generativeModel.generateContent(prompt, new Continuation<>() {
                 @NonNull
                 @Override
@@ -70,18 +74,32 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void resumeWith(@NonNull Object o) {
-                    GenerateContentResponse response = (GenerateContentResponse) o;
-                    String responseString = response.getText();
-                    assert responseString != null;
-                    Log.d("Response", responseString);
-                    runOnUiThread(() -> {
-                        progressBar.setVisibility(GONE);
-                        responseTextView.setText(TextFormatter.getBoldSpannableText(responseString));
+                    runOnUiThread(() -> progressBar.setVisibility(GONE));
 
-                    });
+                    if (o instanceof Throwable) {
+                        Throwable error = (Throwable) o;
+                        Log.e("Error", "API request failed", error);
+                        runOnUiThread(() -> {
+                            responseTextView.setText("Request failed: " + error.getMessage());
+                        });
+                    } else {
+                        try {
+                            GenerateContentResponse response = (GenerateContentResponse) o;
+                            String responseString = response.getText();
+                            assert responseString != null;
+                            Log.d("Response", responseString);
+                            runOnUiThread(() -> {
+                                responseTextView.setText(TextFormatter.getBoldSpannableText(responseString));
+                            });
+                        } catch (Exception e) {
+                            Log.e("Error", "Exception occurred", e);
+                            runOnUiThread(() -> {
+                                responseTextView.setText("Error processing response: " + e.getMessage());
+                            });
+                        }
+                    }
                 }
             });
         });
-
     }
 }
