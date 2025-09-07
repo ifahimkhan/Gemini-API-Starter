@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Added -->
+    <color name="teal_700">#018786</color>
+    <color name="surface_variant">#FFEAEAEA</color>
 </resources>
