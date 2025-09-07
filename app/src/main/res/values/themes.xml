@@ -1,9 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.GeminiAPIStarter" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Light Theme -->
+    <style name="Theme.GeminiAI" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#4B4BD6</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#000000</item>
     </style>
 
-    <style name="Theme.GeminiAPIStarter" parent="Base.Theme.GeminiAPIStarter" />
 </resources>
