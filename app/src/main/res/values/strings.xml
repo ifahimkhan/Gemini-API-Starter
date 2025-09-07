@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Gemini API Starter</string>
+    <string name="voice_input">Voice input</string>
     <string name="lorem_ipsum">
         Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text, which emphasizes the design over content of the layout. It is the standard placeholder text of the printing and publishing industries.
 
@@ -13,7 +14,7 @@ In the 1980s, during the rise of the personal computer, Aldus Corporation develo
 
 The Lorem ipsum text was thought to be random words until the 1990s, when its source was discovered by Richard McClintock, an American professor and Latin scholar. He traced the text to a passage from the 1914 Loeb Classical Library edition of De finibus bonorum et malorum (“On the Ends of Good and Evil”), a treatise on ethics by Roman statesman and philosopher Cicero from 45 bce. In the original passage, the first sentence used in the dummy text reads:
     </string>
-    <string name="enter_your_prompt_here">Enter your prompt here</string>
+    <string name="enter_your_prompt_here">Send a message to CheapGPT</string>
     <string name="response">Response will be displayed here!\n</string>
     <string name="field_cannot_be_empty">Field cannot be empty</string>
     <string name="aistring">**Artificial Intelligence (AI)**
