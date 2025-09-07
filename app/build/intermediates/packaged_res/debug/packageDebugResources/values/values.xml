@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="black">#000000</color>
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">Gemini Enhanced App</string>
+    <string name="gemini_api_key">AIzaSyDqd84jECKUJSU5ERfYqpJUtewo-vVENM8</string>
+    <string name="hint_message">Type a message…</string>
+    <string name="send">Send</string>
+    <string name="speak">Speak</string>
+    <style name="Theme.GeminiEnhancedApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorSurface</item>
+        <item name="android:navigationBarColor" ns1:targetApi="l">?attr/colorSurface</item>
+    </style>
+</resources>

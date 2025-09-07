@@ -1,0 +1,26 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+id bottomBar
+id btnMic
+id btnSend
+id input
+id recyclerView
+id tvMessage
+layout activity_main
+layout item_message_bot
+layout item_message_user
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string gemini_api_key
+string hint_message
+string send
+string speak
+style Theme.GeminiEnhancedApp

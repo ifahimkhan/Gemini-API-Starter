@@ -1,0 +1,153 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.techsetu.geminichat"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:4:5-66
+11-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+12-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:5:5-70
+12-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:5:22-68
+13
+14    <permission
+14-->[androidx.core:core:1.13.1] C:\Users\khush\.gradle\caches\transforms-4\4a68c54374c8400134b1f715352a6d7a\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+15        android:name="com.techsetu.geminichat.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+15-->[androidx.core:core:1.13.1] C:\Users\khush\.gradle\caches\transforms-4\4a68c54374c8400134b1f715352a6d7a\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+16        android:protectionLevel="signature" />
+16-->[androidx.core:core:1.13.1] C:\Users\khush\.gradle\caches\transforms-4\4a68c54374c8400134b1f715352a6d7a\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+17
+18    <uses-permission android:name="com.techsetu.geminichat.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+18-->[androidx.core:core:1.13.1] C:\Users\khush\.gradle\caches\transforms-4\4a68c54374c8400134b1f715352a6d7a\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+18-->[androidx.core:core:1.13.1] C:\Users\khush\.gradle\caches\transforms-4\4a68c54374c8400134b1f715352a6d7a\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+19
+20    <application
+20-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:7:5-26:19
+21        android:allowBackup="true"
+21-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:8:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.13.1] C:\Users\khush\.gradle\caches\transforms-4\4a68c54374c8400134b1f715352a6d7a\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+23        android:dataExtractionRules="@xml/data_extraction_rules"
+23-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:9:9-65
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+26        android:fullBackupContent="@xml/backup_rules"
+26-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:10:9-54
+27        android:icon="@mipmap/ic_launcher"
+27-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:11:9-43
+28        android:label="@string/app_name"
+28-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:12:9-41
+29        android:roundIcon="@mipmap/ic_launcher_round"
+29-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:13:9-54
+30        android:supportsRtl="true"
+30-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:14:9-35
+31        android:testOnly="true"
+32        android:theme="@style/Theme.GeminiEnhancedApp" >
+32-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:15:9-55
+33        <activity
+33-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:16:9-22:20
+34            android:name="com.techsetu.geminichat.MainActivity"
+34-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:16:19-47
+35            android:exported="true" >
+35-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:17:13-36
+36            <intent-filter>
+36-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:18:13-21:29
+37                <action android:name="android.intent.action.MAIN" />
+37-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:19:17-69
+37-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:19:25-66
+38
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:20:17-77
+39-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:20:27-74
+40            </intent-filter>
+41        </activity>
+42
+43        <meta-data
+43-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:23:9-25:54
+44            android:name="GEMINI_API_KEY"
+44-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:24:13-42
+45            android:value="@string/gemini_api_key" />
+45-->C:\Users\khush\Downloads\C115_Khushi_GeminiEnhancedApp\app\src\main\AndroidManifest.xml:25:13-51
+46
+47        <provider
+47-->[androidx.emoji2:emoji2:1.3.0] C:\Users\khush\.gradle\caches\transforms-4\577fe101a17f662208611b870afcdcf9\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+48            android:name="androidx.startup.InitializationProvider"
+48-->[androidx.emoji2:emoji2:1.3.0] C:\Users\khush\.gradle\caches\transforms-4\577fe101a17f662208611b870afcdcf9\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+49            android:authorities="com.techsetu.geminichat.androidx-startup"
+49-->[androidx.emoji2:emoji2:1.3.0] C:\Users\khush\.gradle\caches\transforms-4\577fe101a17f662208611b870afcdcf9\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+50            android:exported="false" >
+50-->[androidx.emoji2:emoji2:1.3.0] C:\Users\khush\.gradle\caches\transforms-4\577fe101a17f662208611b870afcdcf9\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+51            <meta-data
+51-->[androidx.emoji2:emoji2:1.3.0] C:\Users\khush\.gradle\caches\transforms-4\577fe101a17f662208611b870afcdcf9\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+52                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+52-->[androidx.emoji2:emoji2:1.3.0] C:\Users\khush\.gradle\caches\transforms-4\577fe101a17f662208611b870afcdcf9\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+53                android:value="androidx.startup" />
+53-->[androidx.emoji2:emoji2:1.3.0] C:\Users\khush\.gradle\caches\transforms-4\577fe101a17f662208611b870afcdcf9\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+54            <meta-data
+54-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\khush\.gradle\caches\transforms-4\4a3cebf11926893828bcb78fbed0df3a\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:29:13-31:52
+55                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+55-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\khush\.gradle\caches\transforms-4\4a3cebf11926893828bcb78fbed0df3a\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:30:17-78
+56                android:value="androidx.startup" />
+56-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\khush\.gradle\caches\transforms-4\4a3cebf11926893828bcb78fbed0df3a\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:31:17-49
+57            <meta-data
+57-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+58                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+58-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+59                android:value="androidx.startup" />
+59-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+60        </provider>
+61
+62        <service
+62-->[androidx.room:room-runtime:2.6.1] C:\Users\khush\.gradle\caches\transforms-4\28ca4187bace95eb6cf545da47969fb4\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+63            android:name="androidx.room.MultiInstanceInvalidationService"
+63-->[androidx.room:room-runtime:2.6.1] C:\Users\khush\.gradle\caches\transforms-4\28ca4187bace95eb6cf545da47969fb4\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+64            android:directBootAware="true"
+64-->[androidx.room:room-runtime:2.6.1] C:\Users\khush\.gradle\caches\transforms-4\28ca4187bace95eb6cf545da47969fb4\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+65            android:exported="false" />
+65-->[androidx.room:room-runtime:2.6.1] C:\Users\khush\.gradle\caches\transforms-4\28ca4187bace95eb6cf545da47969fb4\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+66
+67        <receiver
+67-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+68            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+68-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+69            android:directBootAware="false"
+69-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+70            android:enabled="true"
+70-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+71            android:exported="true"
+71-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+72            android:permission="android.permission.DUMP" >
+72-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+73            <intent-filter>
+73-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+74                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+74-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+74-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+75            </intent-filter>
+76            <intent-filter>
+76-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+77                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+77-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+77-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+78            </intent-filter>
+79            <intent-filter>
+79-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+80                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+80-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+80-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+81            </intent-filter>
+82            <intent-filter>
+82-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+83                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+83-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+83-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\khush\.gradle\caches\transforms-4\66239fb0ec6137cdc39a6811652f9e81\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+84            </intent-filter>
+85        </receiver>
+86    </application>
+87
+88</manifest>
