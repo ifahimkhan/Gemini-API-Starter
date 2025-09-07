@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
 
-        // Create GenerativeModel
+        
         GenerativeModel generativeModel = new GenerativeModel("gemini-2.0-flash",
-                BuildConfig.API_KEY);
+                BuildConfig.GEMINI_API_KEY);
 
 
         submitPromptButton.setOnClickListener(v -> {

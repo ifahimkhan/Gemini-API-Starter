@@ -18,7 +18,7 @@ android {
         versionName = "1.0"
 
         val apiKey: String = project.findProperty("GEMINI_API_KEY") as String? ?: ""
-        buildConfigField("String", "API_KEY", "\"${apiKey}\"")
+        buildConfigField("String", "GEMINI_API_KEY", "\"${ apiKey }\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -45,7 +45,17 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.common)
     implementation(libs.generativeai)
+    implementation(libs.room.runtime.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation ("androidx.room:room-runtime:2.7.2");
+    annotationProcessor ("androidx.room:room-compiler:2.7.2");
+
+
+    implementation ("androidx.room:room-ktx:2.7.2");
+
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.0")) // Check for the latest version
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
 }
