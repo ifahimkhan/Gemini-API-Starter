@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark theme colors -->
+    <color name="primary">#FFD0BCFF</color>
+    <color name="primaryLight">#FF4F378B</color>
+    <color name="secondary">#FFCCC2DC</color>
+    <color name="background">#FF141218</color>
+    <color name="surface">#FF302D38</color>
+    <color name="onPrimary">#FF371E73</color>
+    <color name="onSecondary">#FF332D41</color>
+    <color name="onBackground">#FFE6E1E5</color>
+    <color name="onSurface">#FFE6E1E5</color>
+    <color name="textPrimary">#FFE6E1E5</color>
+    <color name="textSecondary">#FFCAC4D0</color>
+    <color name="iconTint">#FFCAC4D0</color>
+    <color name="userMessageBg">#FF4A4458</color>
+    <color name="botMessageBg">#FF363243</color>
+    <color name="inputBg">#FF23202B</color>
+    <color name="send_button_bg">#FFD0BCFF</color>
+    <color name="error">#FFFFB4AB</color>
+</resources>

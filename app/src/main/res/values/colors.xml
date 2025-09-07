@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Light theme colors -->
+    <color name="primary">#FF6750A4</color>
+    <color name="primaryLight">#FFEADDFF</color>
+    <color name="secondary">#FF625B71</color>
+    <color name="background">#FFFDF7FF</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="onPrimary">#FFFFFFFF</color>
+    <color name="onSecondary">#FFFFFFFF</color>
+    <color name="onBackground">#FF1C1B1F</color>
+    <color name="onSurface">#FF1C1B1F</color>
+    <color name="textPrimary">#FF1C1B1F</color>
+    <color name="textSecondary">#FF5F5C66</color>
+    <color name="iconTint">#FF5F5C66</color>
+    <color name="userMessageBg">#FFE8DEF8</color>
+    <color name="botMessageBg">#FFF3EDFC</color>
+    <color name="inputBg">#FFF3EDFC</color>
+    <color name="send_button_bg">#FF6750A4</color>
+    <color name="error">#FFBA1A1A</color>
 </resources>

@@ -17,8 +17,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        val apiKey: String = project.findProperty("GEMINI_API_KEY") as String? ?: ""
-        buildConfigField("String", "API_KEY", "\"${apiKey}\"")
+        // ✅ Hardcoded API Key (replace with your own key if needed)
+        buildConfigField("String", "API_KEY", "\"AIzaSyCDYqM75r7UBNH42ZDkANkzrt588LcWhnc\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,13 +39,15 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+
+    // Gemini libraries
     implementation(libs.common)
     implementation(libs.generativeai)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
