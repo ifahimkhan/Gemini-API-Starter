@@ -1,9 +1,12 @@
+import org.gradle.kotlin.dsl.annotationProcessor
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     alias(libs.plugins.android.application)
 }
 
 android {
-    namespace = "com.fahim.geminiapistarter"
+    namespace = "com.c008.akshajramakrishnan"
     compileSdk = 35
     buildFeatures {
         buildConfig = true
@@ -45,6 +48,12 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.common)
     implementation(libs.generativeai)
+
+    // Room dependencies
+    implementation ("androidx.room:room-runtime:2.6.1");
+    annotationProcessor ("androidx.room:room-compiler:2.6.1");
+    implementation ("androidx.room:room-ktx:2.6.1"); // optional for coroutines
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
