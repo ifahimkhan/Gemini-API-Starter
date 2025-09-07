@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.fahim.geminiapistarter"
+    namespace = "com.c010_dev.geminiapistarter"
     compileSdk = 35
     buildFeatures {
         buildConfig = true
@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.fahim.geminiapistarter"
+        applicationId = "com.c010_dev.geminiapistarter"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.common)
     implementation(libs.generativeai)
+    implementation(libs.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

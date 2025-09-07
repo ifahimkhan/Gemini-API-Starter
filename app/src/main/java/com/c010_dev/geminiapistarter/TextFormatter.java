@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.c010_dev.geminiapistarter;
 
 import android.graphics.Typeface;
 import android.text.Spannable;
