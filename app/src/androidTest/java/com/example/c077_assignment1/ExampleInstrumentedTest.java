@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.example.c077_assignment1;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.fahim.geminiapistarter", appContext.getPackageName());
+        assertEquals("com.example.c077_assignment1", appContext.getPackageName());
     }
 }

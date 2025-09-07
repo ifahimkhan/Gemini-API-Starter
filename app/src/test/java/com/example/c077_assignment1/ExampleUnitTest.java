@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.example.c077_assignment1;
 
 import org.junit.Test;
 

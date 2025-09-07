@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Gemini API Starter"
+rootProject.name = "C077_Assignment1"
 include(":app")
- 
