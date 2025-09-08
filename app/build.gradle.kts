@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android) // Added Kotlin Android plugin
 }
 
 android {
     namespace = "com.fahim.geminiapistarter"
-    compileSdk = 35
+    compileSdk = 34
     buildFeatures {
         buildConfig = true
         viewBinding = true
@@ -13,7 +14,7 @@ android {
     defaultConfig {
         applicationId = "com.fahim.geminiapistarter"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -34,6 +35,17 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions { 
+        jvmTarget = "11"
+    }
+
+    // Explicitly define source sets for Kotlin to ensure src/main/java is included
+    sourceSets {
+        getByName("main") {
+            kotlin.srcDirs("src/main/java")
+        }
     }
 }
 
