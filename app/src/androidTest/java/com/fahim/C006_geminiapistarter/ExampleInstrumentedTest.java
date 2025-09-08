@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.fahim.C006_geminiapistarter;
 
 import android.content.Context;
 
