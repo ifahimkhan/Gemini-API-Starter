@@ -10,6 +10,8 @@ android {
         viewBinding = true
     }
 
+
+
     defaultConfig {
         applicationId = "com.fahim.geminiapistarter"
         minSdk = 26
