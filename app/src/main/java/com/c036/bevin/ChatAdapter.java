@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.c036.bevin;
 
 import android.view.LayoutInflater;
 import android.view.View;

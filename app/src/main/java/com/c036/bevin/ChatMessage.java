@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.c036.bevin;
 
 public class ChatMessage {
     private String message;
