@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.C016.Aanchal"
+        applicationId = "com.C035.Sukhada"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
