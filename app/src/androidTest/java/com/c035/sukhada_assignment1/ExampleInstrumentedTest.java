@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.c035.sukhada_assignment1;
 
 import android.content.Context;
 

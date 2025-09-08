@@ -1,9 +1,12 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
 }
 
 android {
-    namespace = "com.fahim.geminiapistarter"
+    namespace = "com.c035.sukhada_assignment1"
     compileSdk = 35
     buildFeatures {
         buildConfig = true
@@ -11,13 +14,18 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.fahim.geminiapistarter"
+        applicationId = "com.C016.Aanchal"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
+        val localProps = Properties()
+        val localFile = rootProject.file("local.properties")
+        if (localFile.exists()) {
+            localProps.load(FileInputStream(localFile))
+        }
 
-        val apiKey: String = project.findProperty("GEMINI_API_KEY") as String? ?: ""
+        val apiKey: String = localProps.getProperty("GEMINI_API_KEY") as String? ?: ""
         buildConfigField("String", "API_KEY", "\"${apiKey}\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,6 +48,9 @@ android {
 dependencies {
 
     implementation(libs.appcompat)
+    implementation("com.google.android.material:material:1.12.0")
+    implementation ("androidx.room:room-runtime:2.6.1")
+    annotationProcessor ("androidx.room:room-compiler:2.6.1")
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
