@@ -1,1 +1,1 @@
-ADD YOUR GEMINI AI API KEY IN ** build.gradle.kts** and in **gradle.properties**
+ADD YOUR GEMINI AI API KEY IN _**build.gradle.kts**_ and in _**gradle.properties**_
