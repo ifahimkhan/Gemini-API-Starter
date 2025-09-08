@@ -1,4 +1,4 @@
-package com.fahim.geminiapistarter;
+package com.c036.bevin;
 
 import android.graphics.Typeface;
 import android.text.Spannable;
@@ -9,9 +9,6 @@ import android.text.style.StyleSpan;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import kotlin.text.Regex;
-import kotlin.text.RegexKt;
 
 public class TextFormatter {
 

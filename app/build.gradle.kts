@@ -3,15 +3,17 @@ plugins {
 }
 
 android {
-    namespace = "com.fahim.geminiapistarter"
-    compileSdk = 35
+    namespace = "com.c036.bevin"
+    compileSdk = 36
     buildFeatures {
         buildConfig = true
         viewBinding = true
     }
 
+
+
     defaultConfig {
-        applicationId = "com.fahim.geminiapistarter"
+        applicationId = "com.c036.bevin"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
