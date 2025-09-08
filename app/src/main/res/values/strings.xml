@@ -57,4 +57,28 @@ The Lorem ipsum text was thought to be random words until the 1990s, when its so
                                                                                                     * **New Product and Service Innovations:** Drive creativity and foster innovation.
                                                                                                     * **Improved Quality of Life:** Assist in healthcare, transportation, and other essential services.</string>
 
+
+    <!-- <string name="lorem_ipsum">
+        Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing
+        layouts. It features scrambled Latin text, which emphasizes the design over content of the
+        layout. It is the standard placeholder text of the printing and publishing industries.
+
+        Its name derives from the first words of the standard Lorem ipsum passage:
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        The first use of Lorem ipsum is uncertain
+    </string> -->
+    <string name="change_theme_color">Change theme color</string>
+    <string name="toggle_theme">Toggle light/dark theme</string>
+    <string name="speak_prompt">Speak your prompt</string>
+    <string name="send_prompt">Send prompt</string>
+    <string name="switch_to_light_mode">Switch to light mode</string>
+    <string name="switch_to_dark_mode">Switch to dark mode</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>
