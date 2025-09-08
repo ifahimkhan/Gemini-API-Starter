@@ -8,9 +8,6 @@
     android:foregroundTint="@color/white"
     android:foregroundTintMode="add">
 
-    <!-- RecyclerView for chat -->
-
-    <!-- Your input box -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
@@ -48,20 +45,32 @@
             android:maxLines="5" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Mic button (now between input and send) -->
     <ImageButton
         android:id="@+id/micButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginBottom="5dp"
         android:background="#097BB8"
+        android:contentDescription="micButton"
         android:foregroundTint="#FFFFFF"
         android:src="@drawable/outline_audio_file_24"
-        android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@id/promptEditTextLayout"
-        app:layout_constraintEnd_toStartOf="@id/sendButton" />
+        app:layout_constraintEnd_toStartOf="@id/sendButton"
+        app:tint="#FFFFFF" />
 
-    <!-- Send button -->
+    <ImageButton
+        android:id="@+id/cameraButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="5dp"
+        android:background="#0679B7"
+        android:contentDescription="cameraButton"
+        android:src="@drawable/baseline_send_24"
+        app:layout_constraintBottom_toBottomOf="@id/promptEditTextLayout"
+        app:layout_constraintEnd_toStartOf="@id/sendButton"
+        app:tint="#FFFFFF" />
+
     <ImageButton
         android:id="@+id/sendButton"
         android:layout_width="48dp"
@@ -69,13 +78,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="5dp"
         android:background="#0679B7"
+        android:contentDescription="sendButton"
         android:src="@drawable/baseline_send_24"
-        android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@id/promptEditTextLayout"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="#FFFFFF" />
 
-
-    <!-- Progress bar -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="48dp"
