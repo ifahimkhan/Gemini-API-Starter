@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.fahim.geminiapistarter"
+    namespace = "com.fahim.sharvil"
     compileSdk = 35
     buildFeatures {
         buildConfig = true
@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.fahim.geminiapistarter"
+        applicationId = "com.fahim.sharvil"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
