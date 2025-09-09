@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <!-- YOUR LIGHT MODE COLORS -->
+    <color name="pastel_pink_background">#FFCBE8</color>
+    <color name="toolbar_pink">#FF69B4</color>
+    <color name="hot_pink_user_bubble">#FF69B4</color>
+    <color name="light_hot_pink_ai_bubble">#FF8EC6</color>
+    <color name="white_text">#FFFFFFFF</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- YOUR DARK MODE COLORS -->
+    <color name="dark_burgundy_background">#541F42</color>
+    <color name="dark_burgundy_header">#B03B76</color>
+    <color name="dark_burgundy_user_bubble">#BF4181</color>
+    <color name="dark_burgundy_ai_bubble">#DB70A4</color>
+    <color name="dark_mode_pastel_text">#FFCBE8</color>
+
+    <!-- Standard colors needed for readability -->
+    <color name="black">#FF000000</color>
 </resources>
