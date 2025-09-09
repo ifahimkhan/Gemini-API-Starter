@@ -1,3 +1,17 @@
+import java.io.File
+import java.io.FileInputStream
+import java.util.Properties
+
+// Function to read properties from local.properties file
+fun gradleLocalProperties(projectRootDir: File, providers: org.gradle.api.provider.ProviderFactory): Properties {
+    val props = Properties()
+    val localPropertiesFile = File(projectRootDir, "local.properties")
+    if (localPropertiesFile.exists()) {
+        FileInputStream(localPropertiesFile).use { props.load(it) }
+    }
+    return props
+}
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -17,8 +31,10 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        val apiKey: String = project.findProperty("GEMINI_API_KEY") as String? ?: ""
-        buildConfigField("String", "API_KEY", "\"${apiKey}\"")
+        // Use the function here
+        val props = gradleLocalProperties(rootDir, providers)
+        val geminiKey = props.getProperty("GEMINI_API_KEY") ?: ""
+        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiKey\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -48,4 +64,18 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    // AndroidX UI
+    implementation("androidx.appcompat:appcompat:1.7.0")
+// AppCompat Activity, DayNight theme [13]
+    implementation("androidx.core:core-ktx:1.13.1")
+// Core APIs; use 1.17.0+ if calling WindowCompat.enableEdgeToEdge [17]
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+// RecyclerView [2]
+    implementation("com.google.android.material:material:1.13.0")
+// Material 3 widgets [8][20]
+// Guava Futures for Java callbacks (Futures, FutureCallback, ListenableFuture)
+    implementation("com.google.guava:guava:31.1-android")
+// Android-friendly Guava futures [22][7]
+// Optional: concurrency utils if using androidx concurrent futures
+// implementation "androidx.concurrent:concurrent-futures:1.2.0" // only if needed [23]
 }
