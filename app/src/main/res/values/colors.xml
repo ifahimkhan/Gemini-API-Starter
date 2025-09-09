@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Backgrounds -->
+    <color name="backgroundDark">#0D1117</color>
+    <color name="inputBarDark">#161B22</color>
+
+    <!-- Primary accent -->
+    <color name="primaryBlue">#1E90FF</color>
+
+    <!-- Text -->
+    <color name="textPrimary">#E6E6E6</color>
+    <color name="textHint">#808080</color>
+    <color name="textOnBlue">#FFFFFF</color>
 </resources>
