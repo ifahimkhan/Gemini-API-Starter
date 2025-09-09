@@ -1,9 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.GeminiAPIStarter" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Using your colors for the Light Theme -->
+        <item name="colorPrimary">@color/hot_pink_user_bubble</item>
+        <item name="colorSecondary">@color/light_hot_pink_ai_bubble</item>
+        <item name="android:windowBackground">@color/pastel_pink_background</item>
+        <item name="colorSurface">@color/toolbar_pink</item>
+        <item name="colorOnSurface">@color/black</item> <!-- Text must be dark on a light background -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
-
     <style name="Theme.GeminiAPIStarter" parent="Base.Theme.GeminiAPIStarter" />
 </resources>

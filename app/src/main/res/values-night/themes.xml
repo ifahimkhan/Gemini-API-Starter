@@ -1,7 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.GeminiAPIStarter" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Using your colors for the Dark Theme -->
+        <item name="colorPrimary">@color/dark_burgundy_user_bubble</item>
+        <item name="colorSecondary">@color/dark_burgundy_ai_bubble</item>
+        <item name="android:windowBackground">@color/dark_burgundy_background</item>
+        <item name="colorSurface">@color/dark_burgundy_header</item>
+        <item name="colorOnSurface">@color/dark_mode_pastel_text</item> <!-- Text must be light on a dark background -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+    <style name="Theme.GeminiAPIStarter" parent="Base.Theme.GeminiAPIStarter" />
+    <style name="CustomToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/dark_mode_pastel_text</item>
     </style>
 </resources>
+

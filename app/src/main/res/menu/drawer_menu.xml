@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Static items group -->
+    <group android:id="@+id/group_static" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_new_chat"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="New Chat" />
+        <!-- New Settings item -->
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="Settings" />
+    </group>
+
+    <group
+        android:id="@+id/group_conversations"
+        android:checkableBehavior="single">
+        <!-- Dynamic conversation items will be added here -->
+    </group>
+</menu>
