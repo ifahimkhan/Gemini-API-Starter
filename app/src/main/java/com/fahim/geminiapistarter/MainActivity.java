@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         loadChatHistory();
 
-        GenerativeModel gm = new GenerativeModel("gemini-1.5-flash", BuildConfig.API_KEY);
+        GenerativeModel gm = new GenerativeModel("gemini-2.0-flash", BuildConfig.API_KEY);
         model = GenerativeModelFutures.from(gm);
 
         micButton.setOnClickListener(v -> startVoiceInput());
