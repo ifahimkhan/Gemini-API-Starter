@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Gemini API Starter</string>
+    <string name="lorem_ipsum">
+        Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text, which emphasizes the design over content of the layout. It is the standard placeholder text of the printing and publishing industries.
+
+Its name derives from the first words of the standard Lorem ipsum passage:
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+The first use of Lorem ipsum is uncertain, though some have suggested the 1500s, when sections of Classical works were often used as dummy texts by printers to make type specimen books demonstrating different fonts. According to this account, the material was chosen based on Latin’s familiarity as a lingua franca across Europe and the popularity of Classical works during the Middle Ages. Whenever it was first created, Lorem ipsum did not gain widespread popularity until the 1960s, when Letraset manufactured preprinted transfer sheets that featured the passage for use in the advertising industry. The sheets allowed typesetters and designers to cut out and rub on the text in various fonts, sizes, and formats for mock-ups and prototypes.
+
+In the 1980s, during the rise of the personal computer, Aldus Corporation developed its PageMaker desktop publishing software, which included Lorem ipsum as a word processing feature. Other word processors, including Microsoft Word, adopted the feature, and it became ubiquitous as a placeholder in Web design. Most Web content management systems, such as Joomla! and Wordpress, also feature a plug-in that generates Lorem ipsum.
+
+The Lorem ipsum text was thought to be random words until the 1990s, when its source was discovered by Richard McClintock, an American professor and Latin scholar. He traced the text to a passage from the 1914 Loeb Classical Library edition of De finibus bonorum et malorum (“On the Ends of Good and Evil”), a treatise on ethics by Roman statesman and philosopher Cicero from 45 bce. In the original passage, the first sentence used in the dummy text reads:
+    </string>
+    <string name="enter_your_prompt_here">Enter your prompt here</string>
+    <string name="response">Response will be displayed here!\n</string>
+    <string name="field_cannot_be_empty">Field cannot be empty</string>
+    <string name="aistring">**Artificial Intelligence (AI)**
+
+                                                                                                    AI refers to the simulation of human intelligence in machines that are programmed to:
+
+                                                                                                    * **Reason:** Analyze data, draw inferences, and make decisions like humans.
+                                                                                                    * **Learn:** Adapt to new information and improve performance over time.
+                                                                                                    * **Problem-Solve:** Identify and solve complex problems.
+                                                                                                    * **Communicate:** Interact with humans using natural language or other forms of communication.
+
+                                                                                                    **Types of AI:**
+
+                                                                                                    * **Weak AI:** Narrowly focused on specific tasks (e.g., object recognition, language translation).
+                                                                                                    * **Strong AI:** Capable of performing a wide range of human-like cognitive functions.
+                                                                                                    * **Super AI:** AI that surpasses human intelligence in all aspects.
+
+                                                                                                    **Main Components of AI:**
+
+                                                                                                    * **Machine Learning:** Algorithms that allow machines to learn from data without explicit programming.
+                                                                                                    * **Deep Learning:** A type of machine learning that uses artificial neural networks to process and learn from large amounts of data.
+                                                                                                    * **Natural Language Processing (NLP):** Techniques for machines to understand, generate, and interact with human language.
+                                                                                                    * **Computer Vision:** Algorithms that enable machines to "see" and interpret images and videos.
+                                                                                                    * **Robotics:** Design, construction, and operation of autonomous robots that can perform tasks in the real world.
+
+                                                                                                    **Applications of AI:**
+
+                                                                                                    * **Healthcare:** Diagnosis, treatment planning, drug discovery
+                                                                                                    * **Finance:** Fraud detection, risk assessment
+                                                                                                    * **Transportation:** Self-driving cars, traffic optimization
+                                                                                                    * **Manufacturing:** Automation, quality control
+                                                                                                    * **Retail:** Personalized shopping experiences, demand forecasting
+                                                                                                    * **Entertainment:** Virtual assistants, video game AI
+                                                                                                    * **Scientific Research:** Data analysis, simulation modeling
+
+                                                                                                    **Benefits of AI:**
+
+                                                                                                    * **Increased Efficiency:** Automate routine tasks, save time, and reduce costs.
+                                                                                                    * **Improved Decision-Making:** Provide insights and recommendations based on vast amounts of data.
+                                                                                                    * **Enhanced Customer Service:** Personalize experiences, respond quickly, and solve problems effectively.
+                                                                                                    * **New Product and Service Innovations:** Drive creativity and foster innovation.
+                                                                                                    * **Improved Quality of Life:** Assist in healthcare, transportation, and other essential services.</string>
+
+</resources>
