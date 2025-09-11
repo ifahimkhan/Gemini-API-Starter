@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }).start();
 
-        // Load last prompt from SharedPreferences
         SharedPreferences prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
         String lastPrompt = prefs.getString("last_prompt", "");
         promptEditText.setText(lastPrompt);
