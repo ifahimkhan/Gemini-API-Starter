@@ -1,3 +1,19 @@
+import java.io.File
+import java.io.FileInputStream
+import java.util.Properties
+
+// Function to read properties from local.properties file
+fun gradleLocalProperties(projectRootDir: File, providers: org.gradle.api.provider.ProviderFactory): Properties {
+    val props = Properties()
+    val localPropertiesFile = File(projectRootDir, "local.properties")
+    if (localPropertiesFile.exists()) {
+        FileInputStream(localPropertiesFile).use { props.load(it) }
+    }
+    return props
+}
+
+
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -17,8 +33,13 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        val apiKey: String = project.findProperty("GEMINI_API_KEY") as String? ?: ""
-        buildConfigField("String", "API_KEY", "\"${apiKey}\"")
+
+
+
+        // Use the function here
+        val props = gradleLocalProperties(rootDir, providers)
+        val geminiKey = props.getProperty("GEMINI_API_KEY") ?: ""
+        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiKey\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
