@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.fahim.geminiapistarter"
+    namespace = "com.C162.AhaanMehta"
     compileSdk = 35
     buildFeatures {
         buildConfig = true
@@ -11,13 +11,13 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.fahim.geminiapistarter"
+        applicationId = "com.C162.AhaanMehta"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
-        val apiKey: String = project.findProperty("GEMINI_API_KEY") as String? ?: ""
+        val apiKey: String = project.findProperty("API_KEY") as String? ?: "AIzaSyB9xpehdRcCwJC6ZoP3gQvfWH9RiJyyWic"
         buildConfigField("String", "API_KEY", "\"${apiKey}\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -45,7 +45,21 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.common)
     implementation(libs.generativeai)
+    implementation(libs.room.common.jvm)
+    implementation(libs.room.runtime.android)
     testImplementation(libs.junit)
+
+    implementation("androidx.recyclerview:recyclerview:1.3.2") // Use the latest version
+
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("org.json:json:20240303")
+
+
+
+
 }
