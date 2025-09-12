@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Gemini API Starter"
+rootProject.name = "C046_Neerav_Reddy_MAD_Assignment_1"
 include(":app")
  
